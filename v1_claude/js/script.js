@@ -41,28 +41,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function generateIngredientList(e) {
         e.preventDefault();
-        const ingredients = [];
-        const rows = ingredientList.querySelectorAll('.ingredient-row');
+        const ingredients = getIngredients();
         const recipeName = document.getElementById('recipeName').value;
         const recipeSource = document.getElementById('recipeSource').value;
 
-        rows.forEach(row => {
-            const ingredient = row.querySelector('.ingredient').value;
-            const quantity = row.querySelector('.quantity').value;
-            const measurement = row.querySelector('.measurement').value;
-            const notes = row.querySelector('.notes').value;
-
-            ingredients.push({
-                ingredient,
-                quantity,
-                measurement,
-                notes
-            });
-        });
-
         const plaintextList = formatPlaintext(ingredients, recipeName, recipeSource);
-        const csvList = formatCSV(ingredients, recipeName, recipeSource);
-
         formattedList.value = plaintextList;
     }
 
@@ -84,15 +67,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function formatCSV(ingredients, recipeName, recipeSource) {
-        let result = 'Ingredient,Quantity,Measurement,Notes\n';
+        let result = 'Recipe Name,Source\n';
+        result += `"${recipeName}","${recipeSource}"\n\n`;
+        result += 'Ingredient,Quantity,Measurement,Notes\n';
         ingredients.forEach(item => {
-            result += `${item.ingredient},${item.quantity},${item.measurement},${item.notes}\n`;
+            result += `"${item.ingredient}","${item.quantity}","${item.measurement}","${item.notes}"\n`;
         });
         return result;
     }
 
     function copyToClipboard(format) {
-        const text = format === 'csv' ? formatCSV(getIngredients()) : formattedList.value;
+        const recipeName = document.getElementById('recipeName').value;
+        const recipeSource = document.getElementById('recipeSource').value;
+        const ingredients = getIngredients();
+        
+        const text = format === 'csv' 
+            ? formatCSV(ingredients, recipeName, recipeSource) 
+            : formattedList.value;
+        
         navigator.clipboard.writeText(text).then(() => {
             alert('Copied to clipboard!');
         }).catch(err => {
