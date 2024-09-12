@@ -5,20 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipe Ingredient List Creator</title>
     <meta name="description" content="Create and format ingredient lists for your recipes easily with our tool. Perfect for cooks and chefs of all levels.">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google AdSense script placeholder -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
 </head>
 <body>
+    <!-- Main container for all content -->
     <div class="container">
+        <!-- Header section -->
         <header>
             <h1>Recipe Ingredient List Creator</h1>
         </header>
+        
+        <!-- Main content area -->
         <main>
             <section id="welcome">
                 <p>Welcome to our Recipe Ingredient List Creator! This tool helps you easily create and format ingredient lists for your recipes. Simply fill in the details below and get your formatted list instantly.</p>
             </section>
+            
+            <!-- Form for ingredient input -->
             <form id="ingredientForm">
+                <!-- Container for ingredient rows -->
                 <div id="ingredientList">
+                    <!-- Initial ingredient row (will be duplicated by JavaScript) -->
                     <div class="ingredient-row">
                         <input type="text" class="ingredient" placeholder="Ingredient" required>
                         <input type="number" class="quantity" placeholder="Quantity" step="0.01" min="0" required>
@@ -37,23 +46,33 @@
                     </div>
                 </div>
                 <button type="button" id="addIngredient">+ Add Ingredient</button>
+                
+                <!-- Recipe information inputs -->
                 <div class="recipe-info">
                     <input type="text" id="recipeName" placeholder="Recipe Name" required>
                     <input type="text" id="recipeSource" placeholder="Recipe Source">
                 </div>
+                
+                <!-- Button to generate the formatted list -->
                 <button type="submit" id="generateList">Generate List</button>
             </form>
+            
+            <!-- Output section for the formatted list -->
             <div id="output">
                 <h2>Formatted Ingredient List</h2>
                 <textarea id="formattedList" readonly></textarea>
+                <!-- Buttons to copy the formatted list -->
                 <button id="copyPlaintext">Copy as Plaintext</button>
                 <button id="copyCSV">Copy as CSV</button>
             </div>
         </main>
+        
+        <!-- Footer section -->
         <footer>
             <p>&copy; 2024 Recipe Ingredient List Creator. All rights reserved.</p>
         </footer>
     </div>
-    <script src="js/script.js"></script>
+    
+    <script src="script.js"></script>
 </body>
 </html>
