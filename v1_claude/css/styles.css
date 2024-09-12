@@ -1,7 +1,6 @@
 :root {
     --primary-color: #4a90e2;
     --secondary-color: #f5a623;
-    --background-color: #f7f9fc;
     --text-color: #333;
     --border-color: #ddd;
 }
@@ -10,33 +9,48 @@ body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     color: var(--text-color);
-    background-color: var(--background-color);
     margin: 0;
     padding: 0;
+    background-image: url('https://images.pexels.com/photos/1055054/pexels-photo-1055054.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 800px;
+    padding: 2rem;
+    margin: 2rem 0;
 }
 
 header {
-    background-color: var(--primary-color);
-    color: white;
     text-align: center;
     padding: 1rem;
+    border-bottom: 2px solid var(--primary-color);
 }
 
 main {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem;
+    padding: 2rem 0;
 }
 
 h1, h2 {
     margin-bottom: 1rem;
+    color: var(--primary-color);
 }
 
 form {
-    background-color: white;
+    background-color: #f9f9f9;
     border-radius: 5px;
     padding: 1rem;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
 }
 
 .ingredient-row {
@@ -102,8 +116,7 @@ footer {
     text-align: center;
     margin-top: 2rem;
     padding: 1rem;
-    background-color: var(--primary-color);
-    color: white;
+    border-top: 2px solid var(--primary-color);
 }
 
 @media (max-width: 600px) {
