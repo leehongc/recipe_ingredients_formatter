@@ -1,0 +1,31 @@
+#prompt from chatgpt
+
+1. Purpose of the Website:
+What is the main goal of your website? (e.g., personal blog, portfolio, e-commerce, informational, community, etc.)
+This is a 
+2. Target Audience:
+Who is the website for? (e.g., professionals, students, general public, etc.)
+3. Design and Layout:
+Preferred color scheme:
+Style inspiration: (modern, minimalist, bold, classic, etc.)
+Layout preference: (e.g., one-page design, multi-page, grid layout, etc.)
+Do you need a responsive design (works on mobile and desktop)?
+4. Sections of the Website:
+Home: What content do you want on the homepage? (e.g., hero image, welcome message, featured products)
+About: Any specific information you'd like to include here? (e.g., your story, team members)
+Services/Products: Description of services or products, along with any pricing.
+Blog/Articles: Will you have a blog section? How do you want it structured?
+Portfolio/Case Studies: Would you like a section for showcasing your work?
+Contact Page: What contact information do you want to display? (e.g., email form, phone, social media links)
+5. Additional Features:
+Will you need a CMS (Content Management System) like WordPress, Joomla, or another platform?
+Do you need an e-commerce feature (e.g., shopping cart, product pages)?
+Do you require a user login feature?
+Any interactive elements? (e.g., live chat, forums)
+6. Technical Details:
+Domain name: Do you have one or need help choosing one?
+Hosting: Are you planning to use a specific hosting provider?
+SEO: Do you want search engine optimization to be included?
+Analytics: Will you need Google Analytics or another tool to track visitors?
+7. Content and Media:
+Do you have content (text, images, videos) ready, or will you need help creating it?

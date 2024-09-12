@@ -1,0 +1,47 @@
+#prompt from chatgpt
+
+1. Purpose of the Website:
+What is the main goal of your website? 
+This is a site that will serve as a tool for people to more easily create ingredient lists for recipes. The site will then display the formatted text in either plaintext for .csv for the user to copy.
+
+2. Target Audience:
+This is for the general public or cooks/chefs who are interested in writing recipes.
+
+3. Design and Layout:
+I would like a minimal design for this site with soothing color themes.
+
+Layout preference: 
+This should be a one page design (more detail below after technical details.
+
+Do you need a responsive design (works on mobile and desktop)?
+Yes
+
+4. Sections of the Website:
+Home: What content do you want on the homepage? 
+A welcome message with a brief instruction about the site.
+
+About: Any specific information you'd like to include here?
+Add a filler text block here for me.
+
+Contacts: a contact form for users to add feedback
+
+
+6. Technical Details:
+
+SEO: Do you want search engine optimization to be included?
+Yes
+
+I want to add google adsense to this.
+
+
+I'm envisioning the design of the body to be a form. Here are the following inputs:
+
+- Ingredients - users would input the name of the ingredients here
+- Quantity - user would input numbers here
+- Measurements - users can type in here, but there could also be a dropdown list of measurements such as cups/tablespoons, or weight in grams
+- Notes - Users would type notes here such as "divided", "finely chopped", "or thinly sliced"
+
+The above inputs would be per line, and users can click + to add another line 
+Then there would be one input of name of the dish, as well as source of this recipe where the user would only need to type once.
+
+Finally, there would be a save/complete button where the above ingredients would be formatted in plaintext or as objects, where the user can copy from. This would be similar to how you chatgpt generates code in a separate window, and user can select the copy button to copy the code.
