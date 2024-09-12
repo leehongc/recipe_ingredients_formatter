@@ -7,8 +7,14 @@ document.getElementById('addIngredient').addEventListener('click', function() {
         <input type="number" name="quantity" placeholder="Quantity" required>
         <input type="text" name="measurement" placeholder="Measurement">
         <input type="text" name="notes" placeholder="Notes">
+        <button type="button" class="removeIngredient">Remove</button>
     `;
     document.getElementById('ingredients').appendChild(ingredientLine);
+
+    // Add event listener for the new "Remove" button
+    ingredientLine.querySelector('.removeIngredient').addEventListener('click', function() {
+        ingredientLine.remove();
+    });
 });
 
 // Handle Form Submission
