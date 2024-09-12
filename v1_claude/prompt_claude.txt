@@ -1,4 +1,5 @@
-#prompt from chatgpt
+#prompt for claude
+Generate the html, css, and js files for with the following prompt:
 
 1. Purpose of the Website:
 What is the main goal of your website? 
@@ -20,11 +21,7 @@ Yes
 Home: What content do you want on the homepage? 
 A welcome message with a brief instruction about the site.
 
-About: Any specific information you'd like to include here?
-Add a filler text block here for me.
-
-Contacts: a contact form for users to add feedback
-
+Then the form to input the ingredients with an output on the bottom of the form.
 
 6. Technical Details:
 
@@ -38,10 +35,10 @@ I'm envisioning the design of the body to be a form. Here are the following inpu
 
 - Ingredients - users would input the name of the ingredients here
 - Quantity - user would input numbers here
-- Measurements - users can type in here, but there could also be a dropdown list of measurements such as cups/tablespoons, or weight in grams
+- Measurements - users can type in here, but there could also be a dropdown list of measurements such as cups, tablespoons, or weight in grams
 - Notes - Users would type notes here such as "divided", "finely chopped", "or thinly sliced"
 
-The above inputs would be per line, and users can click + to add another line 
-Then there would be one input of name of the dish, as well as source of this recipe where the user would only need to type once.
+The above inputs would be per line, and users can click + to add another line of ingredient inputs.
+Then there would be one input of name of the dish, as well as source of this recipe where the user would only need to type once. These two additional inputs would be on the bottom.
 
-Finally, there would be a save/complete button where the above ingredients would be formatted in plaintext or as objects, where the user can copy from. This would be similar to how you chatgpt generates code in a separate window, and user can select the copy button to copy the code.
+Finally, there would be a save/complete button where the above ingredients would be formatted in plaintext or as objects, where the user can copy from. 
