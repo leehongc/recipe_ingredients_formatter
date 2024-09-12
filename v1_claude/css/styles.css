@@ -11,7 +11,7 @@ body {
     color: var(--text-color);
     margin: 0;
     padding: 0;
-    background-image: url('https://images.pexels.com/photos/1055054/pexels-photo-1055054.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    background-image: url('../images/coffee-machine-making-perfect-cup-coffee.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
