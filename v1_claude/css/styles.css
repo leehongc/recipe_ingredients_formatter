@@ -88,6 +88,10 @@ button:hover {
     margin-top: 1rem;
 }
 
+#generateList {
+    margin-top: 1rem;
+}
+
 .recipe-info {
     margin-top: 1rem;
     display: flex;
