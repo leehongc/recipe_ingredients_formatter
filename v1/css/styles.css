@@ -86,16 +86,7 @@ input, textarea {
     margin-top: 10px;
 }
 
-/* About and Contact Styling */
-#about, #contact {
-    margin-top: 40px;
-}
-
-#contactForm {
-    display: flex;
-    flex-direction: column;
-}
-
+/* Footer Styling */
 footer {
     text-align: center;
     margin-top: 20px;
