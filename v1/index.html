@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A tool for creating ingredient lists for recipes. Format your recipe ingredients into plaintext or CSV.">
+    <title>Recipe Ingredient List Tool</title>
+    
+    <!-- Google AdSense Placeholder -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Recipe Ingredient List Tool</h1>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Welcome Message -->
+        <section id="welcome">
+            <p>Welcome! Use this tool to create and format ingredient lists for your recipes. Simply input your ingredients and get ready-to-use text!</p>
+        </section>
+
+        <!-- Recipe Form -->
+        <section id="recipe-form">
+            <form id="ingredientForm">
+                <label for="dishName">Dish Name:</label>
+                <input type="text" id="dishName" name="dishName" required>
+
+                <label for="source">Recipe Source:</label>
+                <input type="text" id="source" name="source">
+
+                <div id="ingredients">
+                    <!-- Ingredient Inputs Start Here -->
+                    <div class="ingredient-line">
+                        <input type="text" name="ingredient" placeholder="Ingredient" required>
+                        <input type="number" name="quantity" placeholder="Quantity" required>
+                        <input type="text" name="measurement" placeholder="Measurement">
+                        <input type="text" name="notes" placeholder="Notes">
+                    </div>
+                </div>
+                
+                <button type="button" id="addIngredient">+ Add another ingredient</button>
+
+                <button type="submit">Save/Complete</button>
+            </form>
+
+            <!-- Output Box -->
+            <div id="outputBox">
+                <h3>Formatted Output:</h3>
+                <pre id="output"></pre>
+                <button id="copyButton">Copy</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About</h2>
+        <p>Here you can add a description of the tool or any background information.</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form id="contactForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Recipe Tool</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
