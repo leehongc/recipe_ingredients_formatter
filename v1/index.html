@@ -29,7 +29,9 @@
                 <div id="ingredientList">
                     <!-- Initial ingredient row (will be duplicated by JavaScript) -->
                     <div class="ingredient-row">
-                        <input type="text" class="ingredient" placeholder="Ingredient" required>
+                        <div class="autocomplete">
+                            <input type="text" class="ingredient"placeholder="Ingredient" required>
+                        </div>
                         <input type="number" class="quantity" placeholder="Quantity" step="0.01" min="0" required>
                         <select class="measurement">
                             <option value="">Select unit</option>
