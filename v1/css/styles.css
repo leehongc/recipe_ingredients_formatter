@@ -57,6 +57,7 @@ form {
     display: flex;
     gap: 0.5rem;
     margin-bottom: 0.5rem;
+    position: relative;
 }
 
 input, select, button {
@@ -121,6 +122,34 @@ footer {
     margin-top: 2rem;
     padding: 1rem;
     border-top: 2px solid var(--primary-color);
+}
+
+/* Autosuggest styles */
+#autoInput {
+    width: 100%;
+    position: relative;
+}
+
+.suggestion {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid var(--border-color);
+    border-top: none;
+    border-radius: 0 0 3px 3px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    display: none;
+}
+
+.suggestion span {
+    color: #999;
+}
+
+#autoInput:focus + .suggestion {
+    display: block;
 }
 
 @media (max-width: 600px) {
