@@ -12,11 +12,21 @@ document.addEventListener('DOMContentLoaded', () => {
     copyPlaintextBtn.addEventListener('click', () => copyToClipboard('plaintext'));
     copyCSVBtn.addEventListener('click', () => copyToClipboard('csv'));
 
+    const fruits = [
+        'apple', 'banana', 'cherry', 'date', 'elderberry', 'fig', 'grape', 'honeydew', 'imbe', 'jackfruit',
+        'kiwi', 'lemon', 'mango', 'nectarine', 
+        'orange', 'olive', 'oakberry', 'opuntia', 'otaheite apple', 'oregon grape',
+        'papaya', 'quince', 'raspberry', 'strawberry', 'tangerine', 'ugli fruit', 'vanilla bean', 'watermelon', 'xigua', 'yuzu', 'zucchini'
+    ];
+
     function addIngredientRow() {
         const newRow = document.createElement('div');
         newRow.className = 'ingredient-row';
         newRow.innerHTML = `
-            <input type="text" class="ingredient" placeholder="Ingredient" required>
+            <div class="autosuggest-container">
+                <input type="text" class="ingredient" placeholder="Ingredient" required>
+                <div class="suggestion"></div>
+            </div>
             <input type="number" class="quantity" placeholder="Quantity" step="0.01" min="0" required>
             <select class="measurement">
                 <option value="">Select unit</option>
@@ -37,7 +47,49 @@ document.addEventListener('DOMContentLoaded', () => {
         removeBtn.addEventListener('click', () => {
             ingredientList.removeChild(newRow);
         });
+
+        // Set up autosuggest for the new ingredient input
+        setupAutosuggest(newRow.querySelector('.ingredient'));
     }
+
+    function setupAutosuggest(input) {
+        const suggestionElement = input.parentElement.querySelector('.suggestion');
+        let currentSuggestion = '';
+
+        input.addEventListener('input', updateSuggestion);
+        input.addEventListener('keydown', handleKeyDown);
+        input.addEventListener('blur', () => {
+            setTimeout(() => {
+                suggestionElement.innerHTML = '';
+            }, 200);
+        });
+
+        function updateSuggestion() {
+            const inputValue = input.value.toLowerCase();
+            currentSuggestion = fruits.find(fruit => 
+                fruit.toLowerCase().startsWith(inputValue) && fruit.toLowerCase() !== inputValue
+            ) || '';
+
+            if (currentSuggestion && inputValue) {
+                suggestionElement.innerHTML = inputValue + '<span>' + currentSuggestion.slice(inputValue.length) + '</span>';
+                suggestionElement.style.display = 'block';
+            } else {
+                suggestionElement.innerHTML = '';
+                suggestionElement.style.display = 'none';
+            }
+        }
+
+        function handleKeyDown(e) {
+            if (e.key === 'Tab' && currentSuggestion) {
+                e.preventDefault();
+                input.value = currentSuggestion;
+                updateSuggestion();
+            }
+        }
+    }
+
+    // Set up autosuggest for initial ingredient input
+    setupAutosuggest(document.querySelector('.ingredient'));
 
     function generateIngredientList(e) {
         e.preventDefault();
@@ -106,40 +158,3 @@ document.addEventListener('DOMContentLoaded', () => {
         return ingredients;
     }
 });
-
-
-// This is for the ingredients autocomplete:
-const input = document.getElementById('autoInput');
-const suggestionElement = document.getElementById('suggestion');
-
-const fruits = [
-    'apple', 'banana', 'cherry', 'date', 'elderberry', 'fig', 'grape', 'honeydew', 'imbe', 'jackfruit',
-    'kiwi', 'lemon', 'mango', 'nectarine', 
-    'orange', 'olive', 'oakberry', 'opuntia', 'otaheite apple', 'oregon grape',
-    'papaya', 'quince', 'raspberry', 'strawberry', 'tangerine', 'ugli fruit', 'vanilla bean', 'watermelon', 'xigua', 'yuzu', 'zucchini'
-];
-let currentSuggestion = '';
-
-input.addEventListener('input', updateSuggestion);
-input.addEventListener('keydown', handleKeyDown);
-
-function updateSuggestion() {
-    const inputValue = input.value.toLowerCase();
-    currentSuggestion = fruits.find(fruit => 
-        fruit.toLowerCase().startsWith(inputValue) && fruit.toLowerCase() !== inputValue
-    ) || '';
-
-    if (currentSuggestion && inputValue) {
-        suggestionElement.innerHTML = inputValue + '<span>' + currentSuggestion.slice(inputValue.length) + '</span>';
-    } else {
-        suggestionElement.innerHTML = '';
-    }
-}
-
-function handleKeyDown(e) {
-    if (e.key === 'Tab' && currentSuggestion) {
-        e.preventDefault();
-        input.value = currentSuggestion;
-        updateSuggestion();
-    }
-}
