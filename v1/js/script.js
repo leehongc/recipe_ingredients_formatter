@@ -91,6 +91,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Set up autosuggest for initial ingredient input
     setupAutosuggest(document.querySelector('.ingredient'));
 
+    function getIngredients() {
+        const ingredients = [];
+        const rows = ingredientList.querySelectorAll('.ingredient-row');
+        rows.forEach(row => {
+            ingredients.push({
+                ingredient: row.querySelector('.ingredient').value,
+                quantity: row.querySelector('.quantity').value,
+                measurement: row.querySelector('.measurement').value,
+                notes: row.querySelector('.notes').value
+            });
+        });
+        return ingredients;
+    }
+
     function generateIngredientList(e) {
         e.preventDefault();
         const ingredients = getIngredients();
@@ -118,6 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return result;
     }
 
+    // Below is the Formatted Ingredient List section
     function formatCSV(ingredients, recipeName, recipeSource) {
         let result = 'Recipe Name,Source\n';
         result += `"${recipeName}","${recipeSource}"\n\n`;
@@ -142,19 +157,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }).catch(err => {
             console.error('Failed to copy: ', err);
         });
-    }
-
-    function getIngredients() {
-        const ingredients = [];
-        const rows = ingredientList.querySelectorAll('.ingredient-row');
-        rows.forEach(row => {
-            ingredients.push({
-                ingredient: row.querySelector('.ingredient').value,
-                quantity: row.querySelector('.quantity').value,
-                measurement: row.querySelector('.measurement').value,
-                notes: row.querySelector('.notes').value
-            });
-        });
-        return ingredients;
     }
 });
