@@ -17,14 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     recipeSourceInput.addEventListener('input', updateIngredientList);
     ingredientList.addEventListener('input', updateIngredientList);
 
-    const fruits = [
-        'apple', 'banana', 'cherry', 'date', 'elderberry', 'fig', 'grape', 'honeydew', 'imbe', 'jackfruit',
-        'kiwi', 'lemon', 'mango', 'nectarine', 
-        'orange', 'olive', 'oakberry', 'opuntia', 'otaheite apple', 'oregon grape',
-        'papaya', 'quince', 'raspberry', 'strawberry', 'tangerine', 'ugli fruit', 'vanilla bean', 'watermelon', 'xigua', 'yuzu', 'zucchini'
-    ];
-
-    function addIngredientRow() {
+        function addIngredientRow() {
         const newRow = document.createElement('div');
         newRow.className = 'ingredient-row';
         newRow.innerHTML = `
@@ -75,8 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function updateSuggestion() {
             const inputValue = input.value.toLowerCase();
-            currentSuggestion = fruits.find(fruit => 
-                fruit.toLowerCase().startsWith(inputValue) && fruit.toLowerCase() !== inputValue
+            currentSuggestion = ingredients.find(ingredient => 
+                ingredient.toLowerCase().startsWith(inputValue) && ingredient.toLowerCase() !== inputValue
             ) || '';
 
             if (currentSuggestion && inputValue) {
