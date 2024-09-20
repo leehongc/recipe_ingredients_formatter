@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Ingredient List Creator</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Recipe Ingredient List Creator</h1>
+        </header>
+        <main>
+            <form id="ingredientForm">
+                <div class="recipe-info">
+                    <input type="text" id="recipeName" placeholder="Recipe Name" required>
+                    <input type="text" id="recipeSource" placeholder="Recipe Source">
+                </div>
+                <div id="ingredientList">
+                    <div class="ingredient-row">
+                        <div class="autosuggest-container">
+                            <input type="text" class="ingredient" placeholder="Ingredient" required>
+                            <div class="suggestion"></div>
+                        </div>
+                        <input type="number" class="quantity" placeholder="Quantity" step="0.01" min="0" required>
+                        <select class="measurement">
+                            <option value="">Select unit</option>
+                            <option value="cup">cup</option>
+                            <option value="tbsp">tbsp</option>
+                            <option value="tsp">tsp</option>
+                            <option value="g">g</option>
+                            <option value="ml">ml</option>
+                            <option value="oz">oz</option>
+                            <option value="lb">lb</option>
+                        </select>
+                        <input type="text" class="notes" placeholder="Notes (e.g., chopped)">
+                    </div>
+                </div>
+                <button type="button" id="addIngredient">+ Add Ingredient</button>
+                <div id="output">
+                    <h2>Formatted Ingredient List</h2>
+                    <textarea id="formattedList" readonly></textarea>
+                    <button type="button" id="copyPlaintext">Copy as Plaintext</button>
+                    <button type="button" id="copyCSV">Copy as CSV</button>
+                </div>
+            </form>
+        </main>
+        <footer>
+            <p>© 2024 Recipe Ingredient List Creator. All rights reserved.</p>
+        </footer>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>

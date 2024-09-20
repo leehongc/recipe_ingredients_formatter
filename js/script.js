@@ -2,15 +2,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('ingredientForm');
     const ingredientList = document.getElementById('ingredientList');
     const addIngredientBtn = document.getElementById('addIngredient');
-    const generateListBtn = document.getElementById('generateList');
     const formattedList = document.getElementById('formattedList');
     const copyPlaintextBtn = document.getElementById('copyPlaintext');
     const copyCSVBtn = document.getElementById('copyCSV');
+    const recipeNameInput = document.getElementById('recipeName');
+    const recipeSourceInput = document.getElementById('recipeSource');
 
     addIngredientBtn.addEventListener('click', addIngredientRow);
-    form.addEventListener('submit', generateIngredientList);
     copyPlaintextBtn.addEventListener('click', () => copyToClipboard('plaintext'));
     copyCSVBtn.addEventListener('click', () => copyToClipboard('csv'));
+
+    // Add event listeners for real-time updates
+    recipeNameInput.addEventListener('input', updateIngredientList);
+    recipeSourceInput.addEventListener('input', updateIngredientList);
+    ingredientList.addEventListener('input', updateIngredientList);
 
     const fruits = [
         'apple', 'banana', 'cherry', 'date', 'elderberry', 'fig', 'grape', 'honeydew', 'imbe', 'jackfruit',
@@ -46,10 +51,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const removeBtn = newRow.querySelector('.remove-row');
         removeBtn.addEventListener('click', () => {
             ingredientList.removeChild(newRow);
+            updateIngredientList();
         });
 
         // Set up autosuggest for the new ingredient input
         setupAutosuggest(newRow.querySelector('.ingredient'));
+
+        // Trigger update after adding new row
+        updateIngredientList();
     }
 
     function setupAutosuggest(input) {
@@ -84,6 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 e.preventDefault();
                 input.value = currentSuggestion;
                 updateSuggestion();
+                updateIngredientList();
             }
         }
     }
@@ -91,25 +101,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Set up autosuggest for initial ingredient input
     setupAutosuggest(document.querySelector('.ingredient'));
 
-    function getIngredients() {
-        const ingredients = [];
-        const rows = ingredientList.querySelectorAll('.ingredient-row');
-        rows.forEach(row => {
-            ingredients.push({
-                ingredient: row.querySelector('.ingredient').value,
-                quantity: row.querySelector('.quantity').value,
-                measurement: row.querySelector('.measurement').value,
-                notes: row.querySelector('.notes').value
-            });
-        });
-        return ingredients;
-    }
-
-    function generateIngredientList(e) {
-        e.preventDefault();
+    function updateIngredientList() {
         const ingredients = getIngredients();
-        const recipeName = document.getElementById('recipeName').value;
-        const recipeSource = document.getElementById('recipeSource').value;
+        const recipeName = recipeNameInput.value;
+        const recipeSource = recipeSourceInput.value;
 
         const plaintextList = formatPlaintext(ingredients, recipeName, recipeSource);
         formattedList.value = plaintextList;
@@ -132,7 +127,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return result;
     }
 
-    // Below is the Formatted Ingredient List section
     function formatCSV(ingredients, recipeName, recipeSource) {
         let result = 'Recipe Name,Source\n';
         result += `"${recipeName}","${recipeSource}"\n\n`;
@@ -144,8 +138,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function copyToClipboard(format) {
-        const recipeName = document.getElementById('recipeName').value;
-        const recipeSource = document.getElementById('recipeSource').value;
+        const recipeName = recipeNameInput.value;
+        const recipeSource = recipeSourceInput.value;
         const ingredients = getIngredients();
         
         const text = format === 'csv' 
@@ -157,5 +151,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }).catch(err => {
             console.error('Failed to copy: ', err);
         });
+    }
+
+    function getIngredients() {
+        const ingredients = [];
+        const rows = ingredientList.querySelectorAll('.ingredient-row');
+        rows.forEach(row => {
+            ingredients.push({
+                ingredient: row.querySelector('.ingredient').value,
+                quantity: row.querySelector('.quantity').value,
+                measurement: row.querySelector('.measurement').value,
+                notes: row.querySelector('.notes').value
+            });
+        });
+        return ingredients;
     }
 });
