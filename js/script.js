@@ -17,12 +17,11 @@ document.addEventListener('DOMContentLoaded', () => {
     copyPlaintextBtn.addEventListener('click', () => copyToClipboard('plaintext'));
     copyCSVBtn.addEventListener('click', () => copyToClipboard('csv'));
 
-    // Add event listeners for real-time updates
     recipeNameInput.addEventListener('input', updateIngredientList);
     recipeSourceInput.addEventListener('input', updateIngredientList);
     ingredientList.addEventListener('input', updateIngredientList);
 
-        function addIngredientRow() {
+    function addIngredientRow() {
         const newRow = document.createElement('div');
         newRow.className = 'ingredient-row';
         newRow.innerHTML = `
@@ -52,10 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
             updateIngredientList();
         });
 
-        // Set up autosuggest for the new ingredient input
         setupAutosuggest(newRow.querySelector('.ingredient'));
-
-        // Trigger update after adding new row
         updateIngredientList();
     }
 
@@ -78,8 +74,15 @@ document.addEventListener('DOMContentLoaded', () => {
             ) || '';
 
             if (currentSuggestion && inputValue) {
-                suggestionElement.innerHTML = inputValue + '<span>' + currentSuggestion.slice(inputValue.length) + '</span>';
+                suggestionElement.innerHTML = `<span class="suggestion-text">${inputValue}${currentSuggestion.slice(inputValue.length)}</span>`;
                 suggestionElement.style.display = 'block';
+                
+                // Add click event listener to the suggestion
+                suggestionElement.querySelector('.suggestion-text').addEventListener('click', () => {
+                    input.value = currentSuggestion;
+                    suggestionElement.innerHTML = '';
+                    updateIngredientList();
+                });
             } else {
                 suggestionElement.innerHTML = '';
                 suggestionElement.style.display = 'none';
@@ -96,10 +99,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Set up autosuggest for initial ingredient input
     setupAutosuggest(document.querySelector('.ingredient'));
 
-    // This updates the output for the ingredients list
     function updateIngredientList() {
         const ingredients = getIngredients();
         const recipeName = recipeNameInput.value;
@@ -108,11 +109,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const plaintextList = formatPlaintext(ingredients, recipeName, recipeSource);
         formattedList.value = plaintextList;
     }
-
-    // Recipe name and ingredients is automatically added when only source is added
-    // Recipe Ingredients is automatically added when recipe name is added
-
-    // Perhaps the only thing to change for now is to make sure to only add ingredients when ingredients are added
 
     function formatPlaintext(ingredients, recipeName, recipeSource) {
         let result = `Recipe Name: ${recipeName}\n`;

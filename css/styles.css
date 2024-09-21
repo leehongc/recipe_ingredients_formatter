@@ -127,6 +127,10 @@ button:hover {
     color: #999;
 }
 
+.suggestion-text {
+    cursor: pointer;
+}
+
 #output {
     margin-top: 2rem;
 }
