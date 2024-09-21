@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     addIngredientBtn.addEventListener('click', addIngredientRow);
     document.addEventListener('keypress', function (e) {
-        if (e.key === 'Enter') {
+        if (e.key === 'Enter' && e.shiftKey) {
           addIngredientRow();
         }
     });
