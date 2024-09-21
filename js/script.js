@@ -94,6 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Set up autosuggest for initial ingredient input
     setupAutosuggest(document.querySelector('.ingredient'));
 
+    // This updates the output for the ingredients list
     function updateIngredientList() {
         const ingredients = getIngredients();
         const recipeName = recipeNameInput.value;
@@ -103,15 +104,20 @@ document.addEventListener('DOMContentLoaded', () => {
         formattedList.value = plaintextList;
     }
 
+    // Recipe name and ingredients is automatically added when only source is added
+    // Recipe Ingredients is automatically added when recipe name is added
+
+    // Perhaps the only thing to change for now is to make sure to only add ingredients when ingredients are added
+
     function formatPlaintext(ingredients, recipeName, recipeSource) {
-        let result = `Recipe: ${recipeName}\n`;
-        if (recipeSource) result += `Source: ${recipeSource}\n`;
+        let result = `Recipe Name: ${recipeName}\n`;
+        if (recipeSource) result += `Recipe Source: ${recipeSource}\n`;
         result += '\nIngredients:\n';
 
         ingredients.forEach(item => {
             let line = '';
             if (item.quantity) line += `${item.quantity} `;
-            if (item.measurement) line += `${item.measurement} `;
+            if (item.measurement) line += `of ${item.measurement} `;
             line += item.ingredient;
             if (item.notes) line += `, ${item.notes}`;
             result += `- ${line}\n`;
