@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function updateSuggestion() {
             const inputValue = input.value.toLowerCase();
-            currentSuggestion = ingredients.find(ingredient => 
+            currentSuggestion = ingredientsExternalList.find(ingredient => 
                 ingredient.toLowerCase().startsWith(inputValue) && ingredient.toLowerCase() !== inputValue
             ) || '';
 
