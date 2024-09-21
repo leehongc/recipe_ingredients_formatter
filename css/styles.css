@@ -89,7 +89,7 @@ input[type="number"] {
 }
 
 select {
-    width: 100px;
+    width: fit-content;
 }
 
 button {
