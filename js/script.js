@@ -9,6 +9,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const recipeSourceInput = document.getElementById('recipeSource');
 
     addIngredientBtn.addEventListener('click', addIngredientRow);
+    document.addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+          addIngredientRow();
+        }
+    });
     copyPlaintextBtn.addEventListener('click', () => copyToClipboard('plaintext'));
     copyCSVBtn.addEventListener('click', () => copyToClipboard('csv'));
 
