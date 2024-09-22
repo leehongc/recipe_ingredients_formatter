@@ -23,8 +23,8 @@ body {
 
 .container {
     background-color: rgba(255, 255, 255, 0.87);
-    backdrop-filter: blur(15px); /* Adds a blur effect */
-    -webkit-backdrop-filter: blur(10px); /* For Safari support */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(10px);
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     width: 90%;
@@ -40,7 +40,7 @@ header {
 }
 
 main {
-    padding: 2rem 0;
+    padding: 2rem 1rem;
 }
 
 h1, h2 {
@@ -57,12 +57,16 @@ form {
 
 .recipe-info {
     display: flex;
-    gap: 1rem;
+    gap: 0.5rem;
     margin-bottom: 1rem;
 }
 
 .recipe-info input {
     flex: 1;
+}
+
+#ingredientList {
+    width: 100%;
 }
 
 .ingredient-row {
@@ -133,6 +137,7 @@ button:hover {
 
 #output {
     margin-top: 2rem;
+    width: 100%;
 }
 
 textarea {
@@ -144,18 +149,19 @@ textarea {
     border-radius: 3px;
     font-size: 1rem;
     resize: vertical;
-}
-
-#copyPlaintext, #copyCSV {
-    background-color: var(--secondary-color);
+    box-sizing: border-box;
 }
 
 #copyButtons {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 0;
-    margin: 0;
     gap: 0.5rem;
+    width: 100%;
+}
+
+#copyPlaintext, #copyCSV {
+    background-color: var(--secondary-color);
+    width: 100%;
 }
 
 footer {
@@ -170,14 +176,17 @@ footer {
         flex-wrap: wrap;
     }
 
-    .autosuggest-container,
-    input,
-    select {
+    .autosuggest-container, input, select {
         width: 100%;
         margin-bottom: 0.5rem;
     }
 
     .recipe-info {
         flex-direction: column;
+    }
+
+    #recipeName, #recipeSource{
+        width: 100%;
+        box-sizing: border-box;
     }
 }
