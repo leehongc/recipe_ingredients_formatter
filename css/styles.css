@@ -148,7 +148,14 @@ textarea {
 
 #copyPlaintext, #copyCSV {
     background-color: var(--secondary-color);
-    margin-right: 0.5rem;
+}
+
+#copyButtons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0;
+    margin: 0;
+    gap: 0.5rem;
 }
 
 footer {

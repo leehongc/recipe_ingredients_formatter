@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('ingredients.length: '+ ingredients.length);
         console.log('ingredients[0]: '+ ingredients[0].value);
         ingredients.forEach(ingredient => console.log('each ingredient: '+ ingredient));
-
+        
 
         if (ingredients.length==1){
             // This is where only recipeName and/or recipeSource is inputted
