@@ -21,39 +21,78 @@ document.addEventListener('DOMContentLoaded', () => {
     recipeSourceInput.addEventListener('input', updateIngredientList);
     ingredientList.addEventListener('input', updateIngredientList);
 
+    // function addIngredientRow() {
+    //     const newRow = document.createElement('div');
+    //     newRow.className = 'ingredient-row';
+    //     newRow.innerHTML = `
+    //             <input type="text" class="ingredient" placeholder="Ingredient" required>
+    //             <div class="suggestion"></div>
+    //         <input type="number" class="quantity" placeholder="Quantity" step="0.01" min="0" required>
+    //         <select class="measurement">
+    //             <option value="">Select unit</option>
+    //             <option value="cup">cup</option>
+    //             <option value="tbsp">tbsp</option>
+    //             <option value="tsp">tsp</option>
+    //             <option value="g">g</option>
+    //             <option value="ml">ml</option>
+    //             <option value="oz">oz</option>
+    //             <option value="lb">lb</option>
+    //         </select>
+    //         <input type="text" class="notes" placeholder="Notes (e.g., chopped)">
+    //         <button type="button" class="remove-row">-</button>
+    //     `;
+    //     ingredientList.appendChild(newRow);
+
+    //     const removeBtn = newRow.querySelector('.remove-row');
+    //     removeBtn.addEventListener('click', () => {
+    //         ingredientList.removeChild(newRow);
+    //         updateIngredientList();
+    //     });
+
+    //     setupAutosuggest(newRow.querySelector('.ingredient'));
+    //     updateIngredientList();
+    // }
+
     function addIngredientRow() {
         const newRow = document.createElement('div');
         newRow.className = 'ingredient-row';
         newRow.innerHTML = `
-            <div class="autosuggest-container">
-                <input type="text" class="ingredient" placeholder="Ingredient" required>
-                <div class="suggestion"></div>
+            <div class="ingredient-quantity">
+                    <input type="text" class="ingredient" placeholder="Ingredient" required>
+                    <div class="suggestion"></div>
+                <input type="number" class="quantity" placeholder="Quantity" step="0.01" min="0" required>
             </div>
-            <input type="number" class="quantity" placeholder="Quantity" step="0.01" min="0" required>
-            <select class="measurement">
-                <option value="">Select unit</option>
-                <option value="cup">cup</option>
-                <option value="tbsp">tbsp</option>
-                <option value="tsp">tsp</option>
-                <option value="g">g</option>
-                <option value="ml">ml</option>
-                <option value="oz">oz</option>
-                <option value="lb">lb</option>
-            </select>
-            <input type="text" class="notes" placeholder="Notes (e.g., chopped)">
-            <button type="button" class="remove-row">-</button>
+            <div class="measurement-notes">
+                <select class="measurement">
+                    <option value="">Select unit</option>
+                    <option value="cup">cup</option>
+                    <option value="tbsp">tbsp</option>
+                    <option value="tsp">tsp</option>
+                    <option value="g">g</option>
+                    <option value="ml">ml</option>
+                    <option value="oz">oz</option>
+                </select>
+                <input type="text" class="notes" placeholder="Notes (e.g., chopped)">
+                <button type="button" class="remove-row">-</button>
+            </div>   
         `;
+        
         ingredientList.appendChild(newRow);
-
+    
+        // Set up autosuggest for the newly added ingredient input
+        const ingredientInput = newRow.querySelector('.ingredient');
+        setupAutosuggest(ingredientInput);
+    
+        // Set up the remove button event
         const removeBtn = newRow.querySelector('.remove-row');
         removeBtn.addEventListener('click', () => {
             ingredientList.removeChild(newRow);
             updateIngredientList();
         });
-
-        setupAutosuggest(newRow.querySelector('.ingredient'));
+    
         updateIngredientList();
     }
+    
 
     function setupAutosuggest(input) {
         const suggestionElement = input.parentElement.querySelector('.suggestion');
