@@ -65,20 +65,21 @@ form {
     flex: 1;
 }
 
-#ingredientList {
-    width: 100%;
-}
-
 .ingredient-row {
+    width: 100%;
     display: flex;
     gap: 0.5rem;
     margin-bottom: 0.5rem;
     align-items: flex-start;
 }
 
+.ingredient-quantity, .measurement-notes{
+    display: flex;
+    flex: 1;
+} 
+
 .autosuggest-container {
     position: relative;
-    flex: 2;
 }
 
 input, select, button {
@@ -172,21 +173,32 @@ footer {
 }
 
 @media (max-width: 600px) {
-    .ingredient-row {
-        flex-wrap: wrap;
-    }
 
     .autosuggest-container, input, select {
         width: 100%;
         margin-bottom: 0.5rem;
     }
 
+    .ingredient-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+    }
+
     .recipe-info {
         flex-direction: column;
     }
 
+    .ingredient-quantity, .measurement-notes {
+        flex-direction: column;
+    } 
+
     #recipeName, #recipeSource{
         width: 100%;
+        box-sizing: border-box;
+    }
+
+    .notes {
         box-sizing: border-box;
     }
 }

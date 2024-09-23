@@ -19,21 +19,25 @@
                 </div>
                 <div id="ingredientList">
                     <div class="ingredient-row">
-                        <div class="autosuggest-container">
-                            <input type="text" class="ingredient" placeholder="Ingredient" required>
-                            <div class="suggestion"></div>
+                        <div class="ingredient-quantity">
+                            <div class="autosuggest-container">
+                                <input type="text" class="ingredient" placeholder="Ingredient" required>
+                                <div class="suggestion"></div>
+                            </div>
+                            <input type="number" class="quantity" placeholder="Quantity" step="0.01" min="0" required>
                         </div>
-                        <input type="number" class="quantity" placeholder="Quantity" step="0.01" min="0" required>
-                        <select class="measurement">
-                            <option value="">Select unit</option>
-                            <option value="cup">cup</option>
-                            <option value="tbsp">tbsp</option>
-                            <option value="tsp">tsp</option>
-                            <option value="g">g</option>
-                            <option value="ml">ml</option>
-                            <option value="oz">oz</option>
-                        </select>
-                        <input type="text" class="notes" placeholder="Notes (e.g., chopped)">
+                        <div class="measurement-notes">
+                            <select class="measurement">
+                                <option value="">Select unit</option>
+                                <option value="cup">cup</option>
+                                <option value="tbsp">tbsp</option>
+                                <option value="tsp">tsp</option>
+                                <option value="g">g</option>
+                                <option value="ml">ml</option>
+                                <option value="oz">oz</option>
+                            </select>
+                            <input type="text" class="notes" placeholder="Notes (e.g., chopped)">
+                        </div>                       
                     </div>
                 </div>
                 <button type="button" id="addIngredient">+ Add Ingredient</button>
