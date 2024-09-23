@@ -67,13 +67,13 @@ form {
 
 .ingredient-row {
     width: 100%;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 0.5rem;
     margin-bottom: 0.5rem;
 }
 
 .ingredient-quantity, .measurement-notes {
-    flex-direction: column;
     background-color:#7e9eff;
 } 
 
