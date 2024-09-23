@@ -72,15 +72,30 @@ form {
     margin-bottom: 0.5rem;
 }
 
+.ingredient-quantity, .measurement-notes {
+    flex-direction: column;
+    background-color:#7e9eff;
+} 
+
+/* Autosuggest styles */
+.ingredient-quantity {
+    position: relative;
+    flex: 1;
+}
+
+.measurement-notes {
+    justify-content: flex-end;
+}
+
+.quantity {
+    width: 80px;
+}
+
 input, select, button {
     padding: 0.5rem;
     border: 1px solid var(--border-color);
     border-radius: 3px;
     font-size: 1rem;
-}
-
-.quantity {
-    width: 80px;
 }
 
 select {
@@ -102,11 +117,6 @@ button:hover {
 #addIngredient {
     margin-top: 1rem;
     width: 100%;
-}
-
-/* Autosuggest styles */
-.ingredient-quantity {
-    position: relative;
 }
 
 .suggestion {
@@ -180,12 +190,9 @@ footer {
         gap: 0.5rem;
     }
 
-    .recipe-info {
-        flex-direction: column;
-    }
-
     .ingredient-quantity, .measurement-notes {
         flex-direction: column;
+        background-color: aquamarine;
     } 
 
     #recipeName, #recipeSource, .notes {
