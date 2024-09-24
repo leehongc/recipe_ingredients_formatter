@@ -22,7 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
     recipeSourceInput.addEventListener('input', updateIngredientList);
     ingredientList.addEventListener('input', updateIngredientList);
 
-    function addIngredientRow() {
+    function addIngredientRow(ingredients) {
+
         const newRow = document.createElement('div');
         newRow.className = 'ingredient-row';
         newRow.innerHTML = `
@@ -123,10 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let result = `Recipe Name: ${recipeName}\n`;
         if (recipeSource) result += `Recipe Source: ${recipeSource}\n`;
 
-        if (ingredients[0]['ingredient'].length == 0){
-            console.log("ingredients[0]['ingredient'].length>0");
-            // This is where only recipeName and/or recipeSource is inputted
-        } else {
+        if (ingredients[0]['ingredient'].length > 0){
             result += '\nIngredients:\n';
             ingredients.forEach(item => {
                 let line = '';
