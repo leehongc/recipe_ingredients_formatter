@@ -9,8 +9,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const recipeSourceInput = document.getElementById('recipeSource');
 
 
-    addIngredientBtn.addEventListener('click', addIngredientRow);
-    document.addEventListener('keypress', function (e) {
+    addIngredientBtn.addEventListener('click', () => {
+        // This is to ensure that we have access to the last ingredient so we can check if it's blank later
+        const lastIngredientInput = ingredientList.querySelector('.ingredient-row:last-child .ingredient');
+        const ingredientName = lastIngredientInput ? lastIngredientInput.value : '';
+        addIngredientRow(ingredientName);
+
+    });    document.addEventListener('keypress', function (e) {
         if (e.key === 'Enter' && e.shiftKey) {
           addIngredientRow();
         }
@@ -22,45 +27,51 @@ document.addEventListener('DOMContentLoaded', () => {
     recipeSourceInput.addEventListener('input', updateIngredientList);
     ingredientList.addEventListener('input', updateIngredientList);
 
-    function addIngredientRow(ingredients) {
-
-        const newRow = document.createElement('div');
-        newRow.className = 'ingredient-row';
-        newRow.innerHTML = `
-            <div class="ingredient-quantity">
-                <input type="text" class="ingredient" placeholder="Ingredient" required>
-                <div class="suggestion"></div>
-                <input type="number" class="quantity" placeholder="Quantity" step="0.01" min="0" required>
-            </div>
-            <div class="measurement-notes">
-                <select class="measurement">
-                    <option value="">Select unit</option>
-                    <option value="cup">cup</option>
-                    <option value="tbsp">tbsp</option>
-                    <option value="tsp">tsp</option>
-                    <option value="g">g</option>
-                    <option value="ml">ml</option>
-                    <option value="oz">oz</option>
-                </select>
-                <input type="text" class="notes" placeholder="Notes (e.g., chopped)">
-                <button type="button" class="remove-row">-</button>
-            </div>   
-        `;
+    function addIngredientRow(ingredientName) {
+        if (ingredientName.length > 0){
+            // This is to ensure that ingredient for the last item is not blank
+            const newRow = document.createElement('div');
+            newRow.className = 'ingredient-row';
+            newRow.innerHTML = `
+                <div class="ingredient-quantity">
+                    <input type="text" class="ingredient" placeholder="Ingredient" required>
+                    <div class="suggestion"></div>
+                    <input type="number" class="quantity" placeholder="Quantity" step="0.01" min="0" required>
+                </div>
+                <div class="measurement-notes">
+                    <select class="measurement">
+                        <option value="">Select unit</option>
+                        <option value="cup">cup</option>
+                        <option value="tbsp">tbsp</option>
+                        <option value="tsp">tsp</option>
+                        <option value="g">g</option>
+                        <option value="ml">ml</option>
+                        <option value="oz">oz</option>
+                    </select>
+                    <input type="text" class="notes" placeholder="Notes (e.g., chopped)">
+                    <button type="button" class="remove-row">-</button>
+                </div>   
+            `;
+            
+            ingredientList.appendChild(newRow);
         
-        ingredientList.appendChild(newRow);
-    
-        // Set up autosuggest for the newly added ingredient input
-        const ingredientInput = newRow.querySelector('.ingredient');
-        setupAutosuggest(ingredientInput);
-    
-        // Set up the remove button event
-        const removeBtn = newRow.querySelector('.remove-row');
-        removeBtn.addEventListener('click', () => {
-            ingredientList.removeChild(newRow);
+            // Set up autosuggest for the newly added ingredient input
+            const ingredientInput = newRow.querySelector('.ingredient');
+            setupAutosuggest(ingredientInput);
+        
+            // Set up the remove button event
+            const removeBtn = newRow.querySelector('.remove-row');
+            removeBtn.addEventListener('click', () => {
+                ingredientList.removeChild(newRow);
+                updateIngredientList();
+            });
+        
             updateIngredientList();
-        });
-    
-        updateIngredientList();
+        } else {
+            // The last ingredient is blank
+            alert('Make sure to add an ingredient.');
+        }
+     
     }
     
 
