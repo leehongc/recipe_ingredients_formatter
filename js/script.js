@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const recipeNameInput = document.getElementById('recipeName');
     const recipeSourceInput = document.getElementById('recipeSource');
 
+
     addIngredientBtn.addEventListener('click', addIngredientRow);
     document.addEventListener('keypress', function (e) {
         if (e.key === 'Enter' && e.shiftKey) {
@@ -120,21 +121,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // Update this so when only recipeName or recipeSource is inputted, the ingredients list would not auto populate
     function formatPlaintext(ingredients, recipeName, recipeSource) {
         let result = `Recipe Name: ${recipeName}\n`;
+        if (recipeSource) result += `Recipe Source: ${recipeSource}\n`;
 
-        console.log('ingredients.length: '+ ingredients.length);
-        console.log('ingredients[0]: '+ ingredients[0].value);
-        ingredients.forEach(ingredient => console.log('each ingredient: '+ ingredient));
-        
-
-        if (ingredients.length==1){
+        if (ingredients[0]['ingredient'].length == 0){
+            console.log("ingredients[0]['ingredient'].length>0");
             // This is where only recipeName and/or recipeSource is inputted
-            if (recipeSource) result += `Recipe Source: ${recipeSource}\n`;
         } else {
             result += '\nIngredients:\n';
             ingredients.forEach(item => {
                 let line = '';
                 if (item.quantity) line += `${item.quantity} `;
-                if (item.measurement) line += `${item.measurement} - `;
+                if (item.measurement) line += `${item.measurement} of `;
                 line += item.ingredient;
                 if (item.notes) line += `, ${item.notes}`;
                 result += `- ${line}\n`;
