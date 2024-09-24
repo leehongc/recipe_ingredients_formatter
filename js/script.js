@@ -21,45 +21,13 @@ document.addEventListener('DOMContentLoaded', () => {
     recipeSourceInput.addEventListener('input', updateIngredientList);
     ingredientList.addEventListener('input', updateIngredientList);
 
-    // function addIngredientRow() {
-    //     const newRow = document.createElement('div');
-    //     newRow.className = 'ingredient-row';
-    //     newRow.innerHTML = `
-    //             <input type="text" class="ingredient" placeholder="Ingredient" required>
-    //             <div class="suggestion"></div>
-    //         <input type="number" class="quantity" placeholder="Quantity" step="0.01" min="0" required>
-    //         <select class="measurement">
-    //             <option value="">Select unit</option>
-    //             <option value="cup">cup</option>
-    //             <option value="tbsp">tbsp</option>
-    //             <option value="tsp">tsp</option>
-    //             <option value="g">g</option>
-    //             <option value="ml">ml</option>
-    //             <option value="oz">oz</option>
-    //             <option value="lb">lb</option>
-    //         </select>
-    //         <input type="text" class="notes" placeholder="Notes (e.g., chopped)">
-    //         <button type="button" class="remove-row">-</button>
-    //     `;
-    //     ingredientList.appendChild(newRow);
-
-    //     const removeBtn = newRow.querySelector('.remove-row');
-    //     removeBtn.addEventListener('click', () => {
-    //         ingredientList.removeChild(newRow);
-    //         updateIngredientList();
-    //     });
-
-    //     setupAutosuggest(newRow.querySelector('.ingredient'));
-    //     updateIngredientList();
-    // }
-
     function addIngredientRow() {
         const newRow = document.createElement('div');
         newRow.className = 'ingredient-row';
         newRow.innerHTML = `
             <div class="ingredient-quantity">
-                    <input type="text" class="ingredient" placeholder="Ingredient" required>
-                    <div class="suggestion"></div>
+                <input type="text" class="ingredient" placeholder="Ingredient" required>
+                <div class="suggestion"></div>
                 <input type="number" class="quantity" placeholder="Quantity" step="0.01" min="0" required>
             </div>
             <div class="measurement-notes">

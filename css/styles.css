@@ -73,22 +73,23 @@ form {
     margin-bottom: 0.5rem;
 }
 
-.ingredient-quantity, .measurement-notes {
-    background-color:#7e9eff;
-} 
-
-/* Autosuggest styles */
-.ingredient-quantity {
-    position: relative;
-    flex: 1;
+.ingredient-row input,
+.ingredient-row select {
+    width: 100%;
+    box-sizing: border-box;
 }
 
-.measurement-notes {
-    justify-content: flex-end;
+.ingredient-quantity {
+    position: relative;
 }
 
 .quantity {
     width: 80px;
+}
+
+.measurement-notes {
+    display: flex;
+    justify-content: flex-end;
 }
 
 input, select, button {
@@ -121,7 +122,7 @@ button:hover {
 
 .suggestion {
     position: absolute;
-    top: 100%;
+    top: 50%;
     left: 0;
     width: 100%;
     background-color: #fff;
@@ -185,18 +186,31 @@ footer {
 
 @media (max-width: 600px) {
     .ingredient-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0.5rem;
+        grid-template-columns: 1fr;
     }
 
     .ingredient-quantity, .measurement-notes {
-        flex-direction: column;
-        background-color: aquamarine;
-    } 
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.40rem;
+    }
+
+    .quantity {
+        width: 100%;
+    }
 
     #recipeName, #recipeSource, .notes {
         width: 100%;
         box-sizing: border-box;
+    }
+
+    .suggestion {
+        top: 100%;
+        width: 50%;
+    }
+
+    .remove-row {
+        grid-column: 1 / -1;
+        width: 100%;
     }
 }
