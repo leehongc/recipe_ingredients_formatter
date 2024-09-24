@@ -28,6 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
     ingredientList.addEventListener('input', updateIngredientList);
 
     function addIngredientRow(ingredientName) {
+        // For issue #16, need to add an eventlistener for ingredientList, similar to how ingredientName was implemented here
+        // and need to make sure ingredientList.lenth is > 1
         if (ingredientName.length > 0){
             // This is to ensure that ingredient for the last item is not blank
             const newRow = document.createElement('div');
@@ -60,6 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setupAutosuggest(ingredientInput);
         
             // Set up the remove button event
+
             const removeBtn = newRow.querySelector('.remove-row');
             removeBtn.addEventListener('click', () => {
                 ingredientList.removeChild(newRow);
