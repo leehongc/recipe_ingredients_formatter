@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('ingredientForm');
     const ingredientList = document.getElementById('ingredientList');
     const addIngredientBtn = document.getElementById('addIngredient');
     const formattedList = document.getElementById('formattedList');
@@ -8,12 +7,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const recipeNameInput = document.getElementById('recipeName');
     const recipeSourceInput = document.getElementById('recipeSource');
 
+    const firstRemoveBtn = ingredientList.querySelector('.ingredient-row .remove-row');
+    firstRemoveBtn.addEventListener('click', () => {
+        if (ingredientList.querySelectorAll('.ingredient-row').length > 1) {
+            ingredientList.removeChild(firstRemoveBtn.closest('.ingredient-row'));
+            updateIngredientList();
+        } else {
+            alert('At least one ingredient row must be present.');
+        }
+    });
+
 
     addIngredientBtn.addEventListener('click', () => {
         // This is to ensure that we have access to the last ingredient so we can check if it's blank later
         const lastIngredientInput = ingredientList.querySelector('.ingredient-row:last-child .ingredient');
-        const ingredientName = lastIngredientInput ? lastIngredientInput.value : '';
-        addIngredientRow(ingredientName);
+        const lastIngredientName = lastIngredientInput ? lastIngredientInput.value : '';
+        addIngredientRow(lastIngredientName);
 
     });    document.addEventListener('keypress', function (e) {
         if (e.key === 'Enter' && e.shiftKey) {
@@ -27,10 +36,10 @@ document.addEventListener('DOMContentLoaded', () => {
     recipeSourceInput.addEventListener('input', updateIngredientList);
     ingredientList.addEventListener('input', updateIngredientList);
 
-    function addIngredientRow(ingredientName) {
+    function addIngredientRow(lastIngredientName) {
         // For issue #16, need to add an eventlistener for ingredientList, similar to how ingredientName was implemented here
         // and need to make sure ingredientList.lenth is > 1
-        if (ingredientName.length > 0){
+        if (lastIngredientName.length > 0){
             // This is to ensure that ingredient for the last item is not blank
             const newRow = document.createElement('div');
             newRow.className = 'ingredient-row';
@@ -61,13 +70,20 @@ document.addEventListener('DOMContentLoaded', () => {
             const ingredientInput = newRow.querySelector('.ingredient');
             setupAutosuggest(ingredientInput);
         
-            // Set up the remove button event
-
+            // Set up the remove button event for all rows except for first row
             const removeBtn = newRow.querySelector('.remove-row');
             removeBtn.addEventListener('click', () => {
-                ingredientList.removeChild(newRow);
-                updateIngredientList();
+                console.log('Remove button clicked');
+                if (ingredientList.querySelectorAll('.ingredient-row').length > 1) {
+                    ingredientList.removeChild(newRow);
+                    updateIngredientList();
+                } else {
+                    alert('At least one ingredient row must be present.');
+
+                }
             });
+
+
         
             updateIngredientList();
         } else {
