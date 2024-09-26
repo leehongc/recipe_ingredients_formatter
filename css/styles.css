@@ -185,14 +185,33 @@ footer {
 }
 
 @media (max-width: 600px) {
+    
     .ingredient-row {
         grid-template-columns: 1fr;
     }
 
-    .ingredient-quantity, .measurement-notes {
+    .ingredient-quantity {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 0.40rem;
+        margin-top: 0.8rem;
+    }
+
+    .measurement-notes {
+        flex-direction: column;
+    }
+
+    .measurement {
+        margin-top: 0.4rem;
+    }
+
+    .notes, .remove-row {
+        margin-top: 0.8rem;
+    }
+
+    .remove-row {
+        grid-column: 1 / -1;
+        width: 100%;
     }
 
     .quantity {
@@ -209,8 +228,4 @@ footer {
         width: 50%;
     }
 
-    .remove-row {
-        grid-column: 1 / -1;
-        width: 100%;
-    }
 }
