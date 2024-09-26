@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-
     addIngredientBtn.addEventListener('click', () => {
         // This is to ensure that we have access to the last ingredient so we can check if it's blank later
         const lastIngredientInput = ingredientList.querySelector('.ingredient-row:last-child .ingredient');
@@ -79,18 +78,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     updateIngredientList();
                 } else {
                     alert('At least one ingredient row must be present.');
-
                 }
             });
-
-
         
             updateIngredientList();
         } else {
             // The last ingredient is blank
             alert('Make sure to add an ingredient.');
         }
-     
     }
     
 
@@ -208,4 +203,24 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         return ingredients;
     }
+
+    function updateRemoveRowText(mediaQuery) {
+        const removeRowButtons = document.querySelectorAll('.remove-row');
+        
+        removeRowButtons.forEach(button => {
+            if (mediaQuery.matches) {
+                button.innerHTML = 'Remove Ingredient <i class="fa-solid fa-trash"></i>';
+            } else {
+                button.innerHTML = '<i class="fa-solid fa-trash"></i>';
+            }
+        });
+    }
+    
+    // Create a MediaQueryList object
+    const mediaQuery = window.matchMedia("(max-width: 600px)");
+    // Call the function at run-time
+    updateRemoveRowText(mediaQuery);
+    // Attach listener for state changes
+    mediaQuery.addEventListener('change', updateRemoveRowText);
+
 });
