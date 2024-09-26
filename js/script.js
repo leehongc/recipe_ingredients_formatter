@@ -209,8 +209,10 @@ document.addEventListener('DOMContentLoaded', () => {
         
         removeRowButtons.forEach(button => {
             if (mediaQuery.matches) {
+                console.log('media query matches - screen width is less than 600px');
                 button.innerHTML = 'Remove Ingredient <i class="fa-solid fa-trash"></i>';
             } else {
+                console.log('screen width is greater than 600px');
                 button.innerHTML = '<i class="fa-solid fa-trash"></i>';
             }
         });
