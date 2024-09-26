@@ -162,18 +162,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (item.measurement) line += `${item.measurement} of `;
                 line += item.ingredient;
                 if (item.notes) line += `, ${item.notes}`;
-                result += `- ${line}\n`;
+                result += `\n- ${line}`;
             });
         }
+        console.log('result: '+ result);
         return result;
     }
 
     function formatCSV(ingredients, recipeName, recipeSource) {
-        let result = 'Recipe Name,Source\n';
-        result += `"${recipeName}","${recipeSource}"\n\n`;
-        result += 'Ingredient,Quantity,Measurement,Notes\n';
+        let result = 'Recipe Name,Source';
+        result += `\n"${recipeName}","${recipeSource}"\n`;2
+        result += '\nIngredient,Quantity,Measurement,Notes';
         ingredients.forEach(item => {
-            result += `"${item.ingredient}","${item.quantity}","${item.measurement}","${item.notes}"\n`;
+            result += `\n"${item.ingredient}","${item.quantity}","${item.measurement}","${item.notes}"`;
         });
         return result;
     }
